@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindPlay - Belajar Perangkat Keras</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <section id="landing-page" class="page-container auth-page">
+    <div class="logo-placeholder">💻</div>
+    <h1>MINDPLAY</h1>
+    <p>Belajar Perangkat Keras Jadi Lebih Seru!</p>
+
+    <div id="landing-buttons" class="button-group">
+      <button type="button" onclick="tampilkanLogin()" class="btn-navy">MASUK</button>
+      <button type="button" onclick="tampilkanDaftar()" class="btn-navy">BUAT AKUN</button>
+    </div>
+  </section>
+
+  <section id="form-masuk-container" class="page-container hidden">
+    <button class="btn-back-global" onclick="navigasiKembali()" type="button">◀</button>
+
+    <div class="form-panel">
+      <h2 class="form-title" style="text-align: center; margin-bottom: 20px; color: #1a40af;">Form Masuk</h2>
+      <form onsubmit="event.preventDefault(); loginCheck();" class="auth-form">
+        <div class="field">
+          <label for="username">Email</label>
+          <input type="text" id="username" placeholder="Masukkan username" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Masukkan password" autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn-navy auth-submit">MASUK</button>
+      </form>
+      <p class="hint">Tidak punya akun? Klik <b onclick="tampilkanDaftar()" style="color: #2563EB; cursor: pointer; text-decoration: underline;">BUAT AKUN</b>.</p>
+    </div>
+  </section>
+
+  <section id="form-buat-akun-container" class="page-container hidden">
+    <button type="button" class="btn-back-global" onclick="navigasiKembali()">◀</button>
+
+    <div class="form-panel">
+      <h2 class="form-title" style="text-align: center; margin-bottom: 20px; color: #1a40af;">Buat Akun</h2>
+      <form onsubmit="event.preventDefault(); submitDaftar();" class="auth-form">
+        <div class="field">
+          <label for="fullName">Nama Lengkap</label>
+          <input id="fullName" type="text" placeholder="Masukkan nama lengkap" autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Masukkan email" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="registerPassword">Password</label>
+          <input id="registerPassword" type="password" placeholder="Buat password" autocomplete="new-password" />
+        </div>
+        <div class="field">
+          <label for="confirmPassword">Konfirmasi Password</label>
+          <input id="confirmPassword" type="password" placeholder="Ulangi password" autocomplete="new-password" />
+        </div>
+        <button type="submit" class="btn-navy auth-submit">Submit</button>
+      </form>
+      <p class="hint">Sudah punya akun? Klik <b onclick="tampilkanLogin()" style="color: #2563EB; cursor: pointer; text-decoration: underline;">MASUK</b>.</p>
+    </div>
+  </section>
+
+  <section id="dashboard-page" class="page-container hidden">
+    <div class="dash-container">
+      <div class="dash-header">
+        <h2 id="user-greeting" class="user-greeting">
+          <span class="greeting-text">Hallo, User</span>
+          <span class="wave">👋</span>
+        </h2>
+      </div>
+
+      <div class="dash-card-area">
+        <div class="dash-hero">
+          <div class="hero-title">Selamat Datang di MindPlay!</div>
+          <div class="hero-subtitle">Media Pembelajaran Interaktif</div>
+          <p class="hero-desc">Belajar komputer jadi lebih mudah dan menyenangkan dengan materi yang jelas dan aktivitas game edukatif.</p>
+        </div>
+
+        <div class="dash-main-menu dash-main-menu-revamp" id="dashboard-menu-cards">
+          <div class="dash-card dash-card-materi dashboard-card-left">
+            <div class="dash-card-icon">📖</div>
+            <div class="dash-card-title">MATERI</div>
+            <div class="dash-card-desc">Pelajari berbagai materi komputer dan teknologi secara interaktif.</div>
+            <button id="btn-materi" onclick="navigasiKeMateri()" class="dash-btn dash-btn-materi" type="button">Buka Materi</button>
+          </div>
+
+          <div class="dash-card dash-card-game dashboard-card-right">
+            <div class="dash-card-icon">🎮</div>
+            <div class="dash-card-title">GAME</div>
+            <div class="dash-card-desc">Mainkan game edukasi seru untuk menguji pemahamanmu.</div>
+            <button id="btn-mulai-game" class="dash-btn dash-btn-game" type="button" onclick="navigasiKeGameMenu()">Buka Game</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="materi-page" class="page-container hidden">
+    <button type="button" class="btn-back-global" onclick="navigasiKembali()" aria-label="Kembali">◀</button>
+
+    <div class="materi-wrap" id="materi-dynamic-root">
+      <h2 id="materi-main-title" class="materi-main-title"></h2>
+      <div id="materi-wrap" class="materi-dynamic" style="width:100%; margin-top: 10px;"></div>
+    </div>
+  </section>
+
+  <section id="pilih-game-page" class="page-container hidden">
+    <button type="button" class="btn-back-global" onclick="navigasiKembali()" aria-label="Kembali">◀</button>
+
+    <div class="main-inner">
+      <h1 class="game-menu-title">Pilih Game</h1>
+      <div class="game-card-grid" style="position:relative; z-index:2;">
+        <div class="game-card" role="button" tabindex="0" onclick="startGame('tebak-gambar')">
+          <div class="game-card-icon">🖼️</div>
+          <h2>Tebak Gambar</h2>
+          <p>Jawab pilihan ganda!</p>
+        </div>
+        <div class="game-card" role="button" tabindex="0" onclick="startGame('drag-and-drop')">
+          <div class="game-card-icon">🖱️</div>
+          <h2>Drag and Drop</h2>
+          <p>Seret nama ke posisi benar.</p>
+        </div>
+        <div class="game-card" role="button" tabindex="0" onclick="startGame('kuis-cepat')">
+          <div class="game-card-icon">⚡</div>
+          <h2>Kuis Cepat</h2>
+          <p>Jawab teks dengan cepat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="game-container" class="page-container hidden">
+    <button type="button" class="btn-back-global" onclick="navigasiKembali()" aria-label="Kembali">◀</button>
+
+    <div class="main-inner">
+      <div class="game-header">
+        <h1 class="game-title-with-icon" aria-label="Judul game">
+          <span class="game-title-icon" aria-hidden="true">🎮</span>
+          <span id="game-title">Game</span>
+        </h1>
+        <div class="timer-row">
+          <div class="timer-pill">⏱️ <span id="timer-text">00:45</span></div>
+          <div class="progress-pill">Soal: <span id="progress-text">1/5</span></div>
+        </div>
+      </div>
+
+      <div id="game-card-container" class="game-card-container">
+        <div id="game-ui" class="game-ui"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="score-page" class="page-container hidden">
+    <div class="score-card-container">
+      <h1 class="score-title">Selamat!</h1>
+      <p class="score-subtitle">Kamu telah menyelesaikan game</p>
+      <div class="score-trophy" aria-hidden="true">🏆</div>
+
+      <div class="score-main-box">
+        <div id="final-score" class="score-value">80/100</div>
+        <div class="score-label">Skor Akhir</div>
+      </div>
+
+      <div class="score-stats-grid">
+        <div class="stat-item">
+          <div class="stat-icon">✅</div>
+          <div class="stat-label">Jawaban Benar</div>
+          <div id="correct-count" class="stat-value">4</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">❌</div>
+          <div class="stat-label">Jawaban Salah</div>
+          <div id="wrong-count" class="stat-value">1</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">⏱️</div>
+          <div class="stat-label">Waktu</div>
+          <div id="time-left" class="stat-value">00:26</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">?</div>
+          <div class="stat-label">Total Soal</div>
+          <div class="stat-value">5</div>
+        </div>
+      </div>
+
+      <div class="score-message">
+        <span class="star-icon" aria-hidden="true">⭐</span>
+        <div class="message-content">
+          <strong>Hebat!</strong><br>
+          Kamu sudah memahami materi perangkat keras dengan baik.
+        </div>
+      </div>
+
+      <div class="score-buttons">
+        <button type="button" class="btn-navy" onclick="mainAgain()">Main Lagi</button>
+        <button type="button" class="btn-navy" style="background-color: #475569;" onclick="kembaliKeDashboardFromScore()">Kembali ke Dashboard</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="confirm-exit-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-exit-title">
+      <h2 id="modal-exit-title" class="modal-title">Keluar dari permainan?</h2>
+      <p class="modal-subtitle">Progres permainan saat ini akan hilang.</p>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-modal btn-modal-cancel" onclick="tutupExitModal()">Batal</button>
+        <button type="button" class="btn-modal btn-modal-exit" onclick="keluarGameSaatKonfirmasi()">Keluar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-blobs" aria-hidden="true"></div>
+
+  <!-- Firebase SDK (compat build) -->
+ <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  
+ <script src="script.js"></script>
+</body>
+</html>
+

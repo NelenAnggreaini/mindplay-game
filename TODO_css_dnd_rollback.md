@@ -1,0 +1,8 @@
+- [ ] Audit: cek selector `.dnd-zone-card*` dkk ada/tidak di style.css
+- [ ] Audit: identifikasi konflik `#game-ui .dnd-zone-drop-area` display:flex vs display:block
+- [ ] Tentukan scope fix hanya DND, tanpa menyentuh selector terlarang global
+- [ ] Edit style.css: tambahkan styling untuk `.dnd-zone-card*`, `.dnd-zone-drop-*`, `.dnd-feedback`, `.dnd-item-disabled`
+- [ ] Edit style.css: hapus konflik display (pilih flex atau block) untuk `.dnd-zone-drop-area`
+- [ ] Pastikan `.dnd-item` tidak memotong konten kartu (tinjau height/overflow)
+- [ ] Smoke test: render Drag&Drop + cek Tebak Gambar tidak berubah
+- [ ] Smoke test: responsif desktop/mobile DnD

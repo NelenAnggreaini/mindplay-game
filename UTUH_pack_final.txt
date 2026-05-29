@@ -1,0 +1,10 @@
+Copy-paste file utuh dari:
+1) UTUH_index.html
+2) UTUH_style.css
+3) UTUH_script.js
+
+Lokasi file:
+- UTUH_index.html
+- UTUH_style.css
+- UTUH_script.js
+
