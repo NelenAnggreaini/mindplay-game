@@ -926,18 +926,52 @@ if (activeZoneIdx === 0) {
     return el.getAttribute('data-is-correct') === '1';
   }
 
- items.forEach(item => {
+  function selectItem(item) {
+  if (state.locked) return;
+
+  items.forEach(i => i.classList.remove('selected-mobile'));
+
+  item.classList.add('selected-mobile');
+  window.__selectedDndItem = item;
+}
+
+items.forEach(item => {
 
   item.addEventListener('touchstart', () => {
-    if (state.locked) return;
-
-    items.forEach(i => i.classList.remove('selected-mobile'));
-    item.classList.add('selected-mobile');
-
-    window.__selectedDndItem = item;
-
-    });
+    selectItem(item);
   });
+
+  item.addEventListener('click', () => {
+    selectItem(item);
+  });
+
+});
+
+dropArea.addEventListener('click', () => {
+
+  const selected = window.__selectedDndItem;
+
+  if (!selected) return;
+
+  if (dropHandled) return;
+  if (state.locked) return;
+  if (state.__dndRenderToken !== renderToken) return;
+  if (state.__dndDropHandled) return;
+
+  dropHandled = true;
+  state.__dndDropHandled = true;
+
+  const isCorrect =
+    selected.getAttribute('data-is-correct') === '1';
+
+  dropArea.dataset.filled = 'true';
+
+  selected.classList.remove('selected-mobile');
+
+  handleDropResult(isCorrect);
+
+  window.__selectedDndItem = null;
+});
 
   dropArea.addEventListener('dragover', (e) => {
     e.preventDefault();
