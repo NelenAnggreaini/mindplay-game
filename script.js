@@ -58,35 +58,35 @@ const curriculumData = {
       {
         id: 1,
         q: 'Nama dari perangkat keras pada gambar di bawah ini adalah…',
-        img: 'assets/ram.jpg',
+        img: 'ram.jpg',
         options: ['RAM', 'Processor', 'Harddisk'],
         correct: 'RAM'
       },
       {
         id: 2,
         q: 'Perangkat pada gambar di bawah termasuk ke dalam komponen…',
-        img: 'assets/printer.jpg',
+        img: 'printer.jpg',
         options: ['Input Device', 'Output Device', 'Storage Device'],
         correct: 'Output Device'
       },
       {
         id: 3,
         q: 'Apa fungsi utama dari perangkat penyimpanan pada gambar di bawah?',
-        img: 'assets/ssd.jpg',
+        img: 'ssd.jpg',
         options: ['Memproses data', 'Menampilkan visual', 'Menyimpan data permanen'],
         correct: 'Menyimpan data permanen'
       },
       {
         id: 4,
         q: 'Berdasarkan gambar di bawah, port yang dilingkari merah digunakan untuk koneksi…',
-        img: 'assets/lan-port.jpg',
+        img: 'lan-port.jpg',
         options: ['Kabel LAN/Jaringan', 'Kabel Power', 'Kabel USB'],
         correct: 'Kabel LAN/Jaringan'
       },
       {
         id: 5,
         q: 'Perangkat jaringan pada gambar di bawah ini berfungsi untuk…',
-        img: 'assets/switch.jpg',
+        img: 'switch.jpg',
         options: ['Menghubungkan banyak komputer', 'Menyimpan data browser', 'Memperkuat sinyal Wi-Fi'],
         correct: 'Menghubungkan banyak komputer'
       }
@@ -100,10 +100,10 @@ const curriculumData = {
             title: 'Perangkat Input',
             description: 'Memasukkan Data',
             items: [
-              { name: 'Keyboard', image: 'assets/keyboard.jpg', correct: true },
-              { name: 'Mouse', image: 'assets/hardware-pc.jpg', correct: false },
-              { name: 'Monitor', image: 'assets/hardware-pc.jpg', correct: false },
-              { name: 'Printer', image: 'assets/printer.jpg', correct: false }
+              { name: 'Keyboard', image: 'keyboard.jpg', correct: true },
+              { name: 'Mouse', image: 'hardware-pc.jpg', correct: false },
+              { name: 'Monitor', image: 'hardware-pc.jpg', correct: false },
+              { name: 'Printer', image: 'printer.jpg', correct: false }
             ]
           }
         ]
@@ -115,10 +115,10 @@ const curriculumData = {
             title: 'Perangkat Proses',
             description: 'Mengolah Data',
             items: [
-              { name: 'CPU/Processor', image: 'assets/hardware-pc.jpg', correct: true },
-              { name: 'RAM', image: 'assets/ram.jpg', correct: false },
-              { name: 'NIC', image: 'assets/lan-port.jpg', correct: false },
-              { name: 'SSD', image: 'assets/ssd.jpg', correct: false }
+              { name: 'CPU/Processor', image: 'hardware-pc.jpg', correct: true },
+              { name: 'RAM', image: 'ram.jpg', correct: false },
+              { name: 'NIC', image: 'lan-port.jpg', correct: false },
+              { name: 'SSD', image: 'ssd.jpg', correct: false }
             ]
           }
         ]
@@ -130,10 +130,10 @@ const curriculumData = {
             title: 'Perangkat Output',
             description: 'Menampilkan Hasil',
             items: [
-              { name: 'Printer', image: 'assets/printer.jpg', correct: true },
-              { name: 'Monitor', image: 'assets/hardware-pc.jpg', correct: false },
-              { name: 'Keyboard', image: 'assets/keyboard.jpg', correct: false },
-              { name: 'SSD', image: 'assets/ssd.jpg', correct: false }
+              { name: 'Printer', image: 'printer.jpg', correct: true },
+              { name: 'Monitor', image: 'hardware-pc.jpg', correct: false },
+              { name: 'Keyboard', image: 'keyboard.jpg', correct: false },
+              { name: 'SSD', image: 'ssd.jpg', correct: false }
               ]
           }
         ]
@@ -145,10 +145,10 @@ const curriculumData = {
             title: 'Perangkat Storage',
             description: 'Penyimpanan Data Permanen',
             items: [
-              { name: 'SSD', image: 'assets/ssd.jpg', correct: true },
-              { name: 'RAM', image: 'assets/ram.jpg', correct: false },
-              { name: 'Flashdisk', image: 'assets/flashdisk.jpg', correct: false },
-              { name: 'CPU/Processor', image: 'assets/hardware-pc.jpg', correct: false }
+              { name: 'SSD', image: 'ssd.jpg', correct: true },
+              { name: 'RAM', image: 'ram.jpg', correct: false },
+              { name: 'Flashdisk', image: 'flashdisk.jpg', correct: false },
+              { name: 'CPU/Processor', image: 'hardware-pc.jpg', correct: false }
             ]
           }
         ]
@@ -160,10 +160,10 @@ const curriculumData = {
             title: 'Perangkat WAN/Internet',
             description: 'Menghubungkan ke Internet',
             items: [
-              { name: 'Modem', image: 'assets/flashdisk.jpg', correct: true },
-              { name: 'Router', image: 'assets/hardware-pc.jpg', correct: false },
-              { name: 'Switch', image: 'assets/switch.jpg', correct: false },
-              { name: 'Kabel LAN', image: 'assets/kabel-lan.jpg', correct: false }
+              { name: 'Modem', image: 'flashdisk.jpg', correct: true },
+              { name: 'Router', image: 'hardware-pc.jpg', correct: false },
+              { name: 'Switch', image: 'switch.jpg', correct: false },
+              { name: 'Kabel LAN', image: 'kabel-lan.jpg', correct: false }
             ]
           }
         ]
