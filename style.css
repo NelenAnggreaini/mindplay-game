@@ -1126,6 +1126,16 @@ p { color: var(--slate); }
 
 @media (max-width: 768px){
 
+  /* DASHBOARD */
+  .dash-main-menu-revamp{
+    flex-direction: column;
+  }
+
+  .dash-card{
+    width:100%;
+  }
+
+  /* DND */
   .dnd-grid{
     display:flex;
     flex-direction:column;
